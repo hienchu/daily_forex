@@ -18,8 +18,12 @@ jobs:
       run: |
         pip install requests
     - name: update rates
+      env:
+        POLYGON_API_KEY: ${{ secrets.polygon_api_key }}
       run: |
-        POLYGON_API_KEY=h_0Cz1q_mUpYP5jOhCQeck3vWBQJUSP5 python main.py
+        python main.py
+        git config --global user.email "hienchu@freelancer.com"
+        git config --global user.name "hienchu"
         git add rates_*.json
         git commit -m "rates updated"
         git push
