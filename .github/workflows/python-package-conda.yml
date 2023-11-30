@@ -16,7 +16,7 @@ jobs:
         python-version: '3.10'
     - name: update rates
       run: |
-        python main.py
+        POLYGON_API_KEY=h_0Cz1q_mUpYP5jOhCQeck3vWBQJUSP5 python main.py
         git add rates_*.json
         git commit -m "rates updated"
         git push
