@@ -19,7 +19,7 @@ jobs:
         pip install requests
     - name: update rates
       env:
-        POLYGON_API_KEY: ${{ secrets.polygon_api_key }}
+        POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
       run: |
         python main.py
         git config --global user.email "hienchu@freelancer.com"
