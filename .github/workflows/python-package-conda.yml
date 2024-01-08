@@ -19,13 +19,17 @@ jobs:
     - name: Install python packages
       run: |
         pip install requests
-    - name: update rates
+    - name: update rates with retry
       env:
         POLYGON_API_KEY: ${{ secrets.POLYGON_API_KEY }}
-      run: |
-        python main.py
-        git config --global user.email "hienchu@freelancer.com"
-        git config --global user.name "hienchu"
-        git add rates_*.json
-        git commit -m "rates updated"
-        git push
+      uses: nick-fields/retry@v2.9.0
+      with:
+        max_attempts: 3
+        command: |
+          python main.py
+          git config --global user.email "hienchu@freelancer.com"
+          git config --global user.name "hienchu"
+          git add rates_*.json
+          git commit -m "rates updated"
+          git push
+      
