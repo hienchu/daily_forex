@@ -25,6 +25,7 @@ jobs:
       uses: nick-fields/retry@v2.9.0
       with:
         max_attempts: 3
+        timeout_minutes: 5
         command: |
           python main.py
           git config --global user.email "hienchu@freelancer.com"
